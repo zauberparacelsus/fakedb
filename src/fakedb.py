@@ -32,7 +32,6 @@ class FakeDB:
 			name += self.fileformat
 		outfile = os.path.join(self.datadir, name)
 		
-		#if(os.path.isfile(outfile)):
 		try:
 			with open(outfile, self.readflag) as f:
 				try:
@@ -67,7 +66,6 @@ class FakeDB:
 					flock(f, LOCK_EX | LOCK_NB)
 				except BlockingIOError:
 					return None
-				#print(">> " + self.codec.dumps(body))
 				f.write(self.codec.dumps(body))
 				flock(f, LOCK_UN)
 		except IOError:
